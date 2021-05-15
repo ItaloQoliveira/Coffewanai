@@ -1,0 +1,97 @@
+<html>
+
+<head>
+	<title>Coffewanai</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="css/style2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+
+	<div class="header">
+		<div class="logo">
+			<img src="images/coffee-cup.svg" height="30px" width="30px"></img>
+			<a href="/"> Coffewanai </a>
+		</div>
+		<nav class="bt">
+			<ul class="bt-link">
+				<li class="link bte"><a href="/venda"> Venda </a></li>
+				<li class="link bte selecte"><a href="/estoque"> Estoque </a></li>
+				<li class="link bte"><a href="/caixa"> Caixa </a></li>
+				<li class="link bte"><a href="/relatorio"> Relátorio </a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<div class="contestoque">
+		<div class="midboxestoque">
+			<div class="produtoest">
+				<label class="nomeproduto">Nome do produto</label>
+				<input class="inp" placeholder="0" disabled>
+			</div>
+			<div class="produtoest">
+				<label class="nomeproduto">Nome do produto</label>
+				<input placeholder="0" disabled>
+			</div>
+			<div class="produtoest">
+				<label class="nomeproduto">Nome do produto</label>
+				<input placeholder="0" disabled>
+			</div>
+			<div class="produtoest">
+				<label class="nomeproduto">Nome do produto</label>
+				<input placeholder="0" disabled>
+			</div>
+			<div class="produtoest">
+				<label class="nomeproduto">Nome do produto</label>
+				<input placeholder="0" disabled>
+			</div>
+			<div class="produtoest">
+				<label class="nomeproduto">Nome do produto</label>
+				<input placeholder="0" disabled>
+			</div>
+
+			<div class="btalt">
+				<button class="altbt" id="alterar">
+					Alterar
+				</button>
+			</div>
+
+			<div class="btconfirm">
+				<button class="cancelestoquebt" id="btcancel">
+					Cancelar
+				</button>
+				<button class="confirmbt" id="btcon">
+					Confirmar
+				</button>
+			</div>
+
+
+		</div>
+
+		<div class="imagemte">
+			<img src="images/sister.png"></img>
+		</div>
+	</div>
+
+
+</body>
+<footer>
+	<div class="footers"></div>
+</footer>
+<script>
+	$("document").ready(function () {
+		// $("#btcancel").hide();
+		// $("#btcon").hide();
+		// $("#alterar").click(()=>{
+		// 	$("#btcancel").show();
+		// 	$("#btcon").show();
+		// })
+		$("#alterar").click(()=>{
+			$("#btcon").fadeIn();
+			$("#btcancel").fadeIn();
+		})
+	})
+</script>
+
+</html>

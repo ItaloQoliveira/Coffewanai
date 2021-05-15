@@ -1,0 +1,406 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+}
+
+body{
+    font-family: sans-serif;
+    background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(240, 239, 239) 60%, rgba(112,111,111,1) 100%);
+    color:black;
+    text-decoration: none;
+}
+
+/*===========================================================*/
+ /* HEADER PADRÃO */
+
+.header{
+    height: 10vh;
+    /* background-color: lightblue; */
+    display: flex;
+    align-items: center;
+}
+
+.logo{
+    display:flex;
+    flex: 1;
+    margin: 10px;
+    /* background-color: lightcoral; */
+    align-items: center;
+}
+
+.logo a{
+    font-size:30px;
+    font-weight: 600;
+    margin: 10px 0 0 5px;
+    text-decoration: none; 
+    color:black;
+    transition: .10s linear;
+    /* background-color:lightsteelblue;*/
+}
+
+.logo a:hover{
+    background: linear-gradient(180deg, rgba(247,157,188,0.9976365546218487) 24%, rgba(236,121,160,1) 37%, rgba(228,64,119,1) 70%, rgba(0,0,0,1) 95%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.bt{
+    flex: 1;
+    /* background-color: lightgreen; */
+    font-size: 20px;
+}
+
+.bt-link {
+    display:flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.link a {
+    text-decoration: none;
+    color:rgb(39, 39, 39);
+    padding: 10px;
+}
+
+.selecti a{
+    background: linear-gradient(180deg, rgba(247,157,188,0.9976365546218487) 24%, rgba(236,121,160,1) 37%, rgba(228,64,119,1) 70%, rgba(0,0,0,1) 95%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.bti a:hover{
+    border:2px solid pink;
+    border-radius: 9px;
+}
+
+.selectv a{
+    border:2px solid #3498db;
+    border-radius: 9px;
+}
+
+.btv a:hover{
+    border:2px solid #3498db;
+    border-radius: 9px;
+}
+
+.selecte a{
+    border:2px solid #f1c40f;
+    border-radius: 9px;
+}
+
+.bte a:hover{
+    border:2px solid #f1c40f;
+    border-radius: 9px;
+}
+
+.selectc  a{
+    border: 2px solid #9b59b6;
+    border-radius: 9px;
+}
+
+.btc a:hover{
+    border:2px solid #9b59b6;
+    border-radius: 9px;
+}
+
+.selectr a{
+    border: 2px solid #1abc9c;
+    border-radius: 9px;
+}
+
+.btr a:hover{
+    border: 2px solid #1abc9c;
+    border-radius: 9px;
+}
+
+/*FIM HEADER */
+
+/*===========================================================*/
+/*INICIO TELA INICIAL*/
+.conteudo{
+    height:90vh;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+}
+
+.texto h1{
+    font-size: 70px;
+    background: linear-gradient(180deg, rgba(247,157,188,0.9976365546218487) 24%, rgba(236,121,160,1) 37%, rgba(228,64,119,1) 70%, rgba(0,0,0,1) 95%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+}
+
+.texto p{
+    font-size:30px;
+}
+
+.texto{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+
+.imagemti img{
+    height: 90vh;
+}
+/*FIM TELA INICIAL*/
+/*===========================================================*/
+/*INICIO GERENCIAR VENDAS*/
+
+.contvenda{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.imagemtv img {
+    height: 90vh;
+}
+
+.midbox{
+    margin-top: 20vh;
+    height: 50vh;
+    width: 60vw;
+    margin-left: 5vw;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    border-radius: 15px;
+    border: 2px solid #3498db;
+    background-color: rgb(240, 239, 239);
+    font-weight: 600;
+}
+
+.produto{
+    display: flex;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    font-size:20px;
+    padding: 5px;
+    align-items: center;
+}
+
+
+.produto input{
+    height: 20px;
+    width: 30px;
+    margin: 0 5px 0 5px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+
+.produto input:focus {
+    outline: 1px solid #3498db;
+}
+
+.btpm{
+    border-radius: 7px;
+}
+
+.btpm button {
+    border: none;
+    font-size: 25px;
+}
+
+.btpm button:hover {
+    cursor: pointer;
+}
+
+.pagamento{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.pagamento label {
+    margin-right: 5px;
+}
+
+.btpag button {
+    border-radius: 9px;
+    padding: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .05s linear;
+}
+
+.finalbt {
+    border: none;
+    color: snow;
+    background-color: #3498db;
+}
+
+.cancelbt {
+    border: none;
+    background-color: rgb(92, 91, 91); 
+    color: snow;
+    margin-right:10px;
+}
+
+.btpag button:hover{
+    transform: scale(1.1)
+}
+
+/*FIM GERENCIAR VENDAS*/
+/*===========================================================*/
+/*INICIO GERENCIAR ESTOQUE*/
+
+.contestoque{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.imagemte img {
+    height: 90vh;
+}
+
+.midboxestoque{
+    margin-top: 20vh;
+    height: 50vh;
+    width: 60vw;
+    margin-left: 5vw;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    border-radius: 15px;
+    border: 2px solid #f1c40f;
+    background-color: rgb(240, 239, 239);
+    font-weight: 600;
+}
+
+.produtoest input{
+    width: 30px;
+    margin: 0 5px 0 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.btalt button {
+    border-radius: 9px;
+    padding: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .05s linear;
+    border: 1px solid #f1c40f;
+    color: rgb(39, 39, 39);
+    background-color: snow;
+    margin-right:10px;
+}
+
+.btalt button:hover {
+    transform: scale(1.1)
+}
+
+.btconfirm button {
+    border-radius: 9px;
+    padding: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .05s linear;
+    border: 1px solid #f1c40f;
+    color: rgb(39, 39, 39);
+    background-color: snow;
+    margin-right:10px;
+    display: none;
+}
+
+/*FIM GERENCIAR ESTOQUE*/
+/*===========================================================*/
+/*INICIO GERENCIAR CAIXA*/
+
+.contcaixa{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.imagemtc img {
+    height: 90vh;
+}
+
+.midboxcaixa{
+    margin-top: 20vh;
+    height: 50vh;
+    width: 60vw;
+    margin-left: 5vw;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    border-radius: 15px;
+    border: 2px solid #9b59b6;
+    background-color: rgb(240, 239, 239);
+    font-weight: 600;
+}
+
+.btzerar button {
+    border-radius: 9px;
+    padding: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .05s linear;
+    border: 1px solid #9b59b6;
+    color: rgb(39, 39, 39);
+    background-color: snow;
+    margin-right:10px;
+}
+
+.btzerar button:hover{
+    transform: scale(1.1);
+}
+
+.valorc input{
+    width: 60px;
+    margin: 0 0 0 0;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+/*FIM GERENCIAR CAIXA*/
+/*===========================================================*/
+/*INICIO RELATÓRIO*/
+.contrel{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.imagemtr img {
+    height: 90vh;
+}
+
+.midboxrel{
+    margin-top: 20vh;
+    height: 50vh;
+    width: 60vw;
+    margin-left: 5vw;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    border-radius: 15px;
+    border: 2px solid #1abc9c;
+    background-color: rgb(240, 239, 239);
+    font-weight: 600;
+}
+
+.btrel button {
+    border-radius: 9px;
+    padding: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .05s linear;
+    border: 1px solid #1abc9c;
+    color: rgb(39, 39, 39);
+    background-color: snow;
+    margin-right:10px;
+}
+
+.btrel button:hover {
+    transform: scale(1.1)
+}
+
+
+/*FIM RELATÓRIO*/
+/*===========================================================*/
