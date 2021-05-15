@@ -6,14 +6,16 @@
 	<link rel="stylesheet" href="css/style2.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
-
+<!-- Corpo da página -->
 <body>
-
+	<!-- Cabeçalho -->
 	<div class="header">
+		<!-- Logo -->
 		<div class="logo">
 			<img src="images/coffee-cup.svg" height="30px" width="30px"></img>
 			<a href="/"> Coffewanai </a>
 		</div>
+		<!-- Botões para navegação da página -->
 		<nav class="bt">
 			<ul class="bt-link">
 				<li class="link bte"><a href="/venda"> Venda </a></li>
@@ -23,44 +25,47 @@
 			</ul>
 		</nav>
 	</div>
-
+	<!-- Conteudo da página -->
 	<div class="contestoque">
+		<!-- Caixa central com as operações relacionadas ao gerenciamento de estoque -->
 		<div class="midboxestoque">
 			<div class="produtoest">
-				<label class="nomeproduto">Nome do produto</label>
-				<input class="inp" placeholder="0" disabled>
+				<label class="nomeproduto">Sanduiche</label> <!-- Nome do produto -->	
+				<input inptprod placeholder="1" type="number" min="0" disabled> <!-- Quantidade do produto -->
+			</div> 
+			<div class="produtoest">
+				<label class="nomeproduto">Chá gelado</label>
+				<input inptprod placeholder="2" type="number" min="0" disabled>
 			</div>
 			<div class="produtoest">
-				<label class="nomeproduto">Nome do produto</label>
-				<input placeholder="0" disabled>
+				<label class="nomeproduto">Onigiri</label>
+				<input inptprod placeholder="3" type="number" min="0" disabled>
 			</div>
 			<div class="produtoest">
-				<label class="nomeproduto">Nome do produto</label>
-				<input placeholder="0" disabled>
+				<label class="nomeproduto">Refrigerante</label>
+				<input inptprod placeholder="4" type="number" min="0" disabled>
 			</div>
 			<div class="produtoest">
-				<label class="nomeproduto">Nome do produto</label>
-				<input placeholder="0" disabled>
+				<label class="nomeproduto">Bandeja</label>
+				<input inptprod placeholder="5" type="number" min="0" disabled>
 			</div>
 			<div class="produtoest">
-				<label class="nomeproduto">Nome do produto</label>
-				<input placeholder="0" disabled>
+				<label class="nomeproduto">Suco</label>
+				<input inptprod placeholder="6" type="number" min="0" disabled>
 			</div>
-			<div class="produtoest">
-				<label class="nomeproduto">Nome do produto</label>
-				<input placeholder="0" disabled>
-			</div>
-
+			<!-- Botão de alterar estoque -->
 			<div class="btalt">
 				<button class="altbt" id="alterar">
 					Alterar
 				</button>
 			</div>
-
+			<!-- Botões de confirmação e cancelamento da alteração no estoque -->
 			<div class="btconfirm">
-				<button class="cancelestoquebt" id="btcancel">
+				<!-- Botão de cancelar alteração -->
+				<button class="cancelbt" id="btcancel">
 					Cancelar
 				</button>
+				<!-- Botão de confirmar alteração -->
 				<button class="confirmbt" id="btcon">
 					Confirmar
 				</button>
@@ -68,10 +73,12 @@
 
 
 		</div>
-
+		<!-- Imagem da página de estoque -->
 		<div class="imagemte">
 			<img src="images/sister.png"></img>
 		</div>
+		<!-- Circulo da página de estoque -->
+		<div class="circlee"></div>
 	</div>
 
 
@@ -87,10 +94,23 @@
 		// 	$("#btcancel").show();
 		// 	$("#btcon").show();
 		// })
-		$("#alterar").click(()=>{
+
+		
+		$("#alterar").click(()=>{  // Função para ao clicar em Alterar os botões confirmar e cancelar aparecerem
 			$("#btcon").fadeIn();
 			$("#btcancel").fadeIn();
+
+			$("[inptprod]").prop("disabled", false); //Função para tornar os inputs antes não clicáveis, em clicláveis.						
 		})
+
+		// Funções de Confirmação de cancelamento e de atualização de estoque.
+		$("#btcancel").click(() => {
+			confirm("DESEJA CANCELAR AS ATUALIZAÇÕES?") ? window.location.href='/estoque' : console.log('Cancelamento de atualização cancelado') ;
+		})
+		$("#btcon").click(() => {
+			confirm("CONFIRMAR AS ATUALIZAÇÕES NO ESTOQUE?") ? window.location.href='/' : console.log('Atualização de estoque não realizada') ;
+		});
+		
 	})
 </script>
 

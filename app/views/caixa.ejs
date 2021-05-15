@@ -3,16 +3,19 @@
 <head>
 	<title>Coffewanai</title>
 	<link rel="stylesheet" href="css/style2.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
+<!-- Corpo da página -->
 <body>
-
+	<!-- Cabeçalho -->
 	<div class="header">
+		<!-- Logo -->
 		<div class="logo">
 			<img src="images/coffee-cup.svg" height="30px" width="30px" ></img>
 			<a href="/"> Coffewanai </a>
 		</div>
+		<!-- Botões de navegação da página -->
 		<nav class="bt">
 			<ul class="bt-link">
 				<li class="link btc"><a  href="/venda"> Venda </a></li>				
@@ -24,24 +27,27 @@
 	</div>
 	
 	<div class="contcaixa">
+		<!-- Caixa central com as operações relacionadas ao caixa -->
 		<div class="midboxcaixa">
 			<div class="valorc">
-				<label class="nomeproduto">Quantia em caixa:</label>
-				<input placeholder="0" disabled>
+				<label class="qtcaixa">Quantia em caixa:</label> 
+				<input placeholder="0" disabled> <!-- Quantia em caixa -->
 			</div>
-
+			<!-- Botão de zerar (reinciar) o caixa -->
 			<div class="btzerar">
 				<button class="zerarbt">
-					Zerar
+					Zerar Caixa
 				</button>
 			</div>
 			
 				
 		</div>
-		
+		<!-- Imagem da página de caixa -->
 		<div class="imagemtc">
 			<img src="images/sadistic.png"></img>
 		</div>
+		<!-- Circulo da página de caixa -->
+		<div class="circlec"></div>
 	</div>
 	
 

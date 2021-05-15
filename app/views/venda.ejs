@@ -3,16 +3,19 @@
 <head>
 	<title>Coffewanai</title>
 	<link rel="stylesheet" href="css/style2.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
+<!-- Corpo da página -->
 <body>
-
+	<!-- Cabeçalho -->
 	<div class="header">
+		<!-- Logo -->
 		<div class="logo">
 			<img src="images/coffee-cup.svg" height="30px" width="30px"></img>
 			<a href="/"> Coffewanai </a>
 		</div>
+		<!-- Botões de navegação da págnia -->
 		<nav class="bt">
 			<ul class="bt-link">
 				<li class="link btv selectv"><a href="#"> Venda </a></li>
@@ -22,78 +25,64 @@
 			</ul>
 		</nav>
 	</div>
-
+	<!-- Conteudo da página -->
 	<div class="contvenda">
+		<!-- Caixa central com as operações relacionadas à venda -->
 		<div class="midbox">
 			<div class="produto">
-				<label class="nomeproduto">Nome do produto</label>
-				<input class="inp" placeholder="0">
-				<div class=btpm>
-					<button class="plus fas fa-angle-up"></button>
-					<button class="minus fas fa-angle-down"></button>
-				</div>
+				<label class="nomeproduto">Sanduiche</label> <!-- Nome do produto -->
+				<input placeholder="0" type="number" min="0"> <!-- Quantidade do produto -->
+
 			</div>
 			<div class="produto">
-				<label class="nomeproduto">Nome do produto</label>
-				<input placeholder="0">
-				<div class=btpm>
-					<button class="plus fas fa-angle-up"></button>
-					<button class="minus fas fa-angle-down"></button>
-				</div>
+				<label class="nomeproduto">Chá gelado</label>
+				<input placeholder="0" type="number" min="0">
+
 			</div>
 			<div class="produto">
-				<label class="nomeproduto">Nome do produto</label>
-				<input placeholder="0">
-				<div class=btpm>
-					<button class="plus fas fa-angle-up"></button>
-					<button class="minus fas fa-angle-down"></button>
-				</div>
+				<label class="nomeproduto">Onigiri</label>
+				<input placeholder="0" type="number" min="0">
+
 			</div>
-	
+
 			<div class="produto">
-				<label class="nomeproduto">Nome do produto</label>
-				<input placeholder="0">
-				<div class=btpm>
-					<button class="plus fas fa-angle-up"></button>
-					<button class="minus fas fa-angle-down"></button>
-				</div>
+				<label class="nomeproduto">Refrigerante</label>
+				<input placeholder="0" type="number" min="0">
+
 			</div>
 			<div class="produto">
-				<label class="nomeproduto">Nome do produto</label>
-				<input placeholder="0">
-				<div class=btpm>
-					<button class="plus fas fa-angle-up"></button>
-					<button class="minus fas fa-angle-down"></button>
-				</div>
+				<label class="nomeproduto">Bandeja</label>
+				<input placeholder="0" type="number" min="0">
+
 			</div>
 			<div class="produto">
-				<label class="nomeproduto">Nome do produto</label>
-				<input placeholder="0">
-				<div class=btpm>
-					<button class="plus fas fa-angle-up"></button>
-					<button class="minus fas fa-angle-down"></button>
-				</div>
+				<label class="nomeproduto">Suco</label>
+				<input placeholder="0" type="number" min="0">
+
 			</div>
+			<!-- Botões para selecionar o metodo de pagamento -->
 			<div class="pagamento">
 				<label class="pag">Dinheiro </label><input type="radio" name="metodo" value="Dinheiro">
 				<label class="pag">Cartão </label><input type="radio" name="metodo" value="Cartão">
 			</div>
-	
+			<!-- Botões de cancelar e finalizar venda -->
 			<div class="btpag">
-				<button class="cancelbt">
+				<button class="cancelbt" id="btcancel">
 					Cancelar
 				</button>
-				<button class="finalbt">
+				<button class="finalbt" id="btconfirm">
 					Finalizar
 				</button>
-			</div>	
+			</div>
 		</div>
-		
+		<!-- Imagem da página de venda -->
 		<div class="imagemtv">
 			<img src="images/sweet.png"></img>
 		</div>
+		<!-- Circulo da página de venda -->
+		<div class="circlev"></div>
 	</div>
-	
+
 
 
 
@@ -102,5 +91,20 @@
 <footer>
 	<div class="footers"></div>
 </footer>
+
+<script>
+	// Funções de Confirmação de cancelamento de venda e alerta de finalização
+	$("document").ready(() => {
+		$("#btcancel").click(() => {
+			confirm("DESEJA CANCELAR A VENDA ATUAL?") ? window.location.href = '/venda' : console.log('Cancelamento de venda cancelado');
+		})
+		$("#btconfirm").click(() => {
+			alert("COMPRA FINALIZADA")
+			window.location.href = '/venda'
+		});
+
+	})
+
+</script>
 
 </html>
