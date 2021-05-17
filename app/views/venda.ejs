@@ -7,6 +7,7 @@
 </head>
 
 <!-- Corpo da página -->
+
 <body>
 	<!-- Cabeçalho -->
 	<div class="header">
@@ -31,39 +32,40 @@
 		<div class="midbox">
 			<div class="produto">
 				<label class="nomeproduto">Sanduiche</label> <!-- Nome do produto -->
-				<input inptprod placeholder="0" type="number" min="0" valorp="10"> <!-- Quantidade do produto -->
+				<input inptprod id="prod0" placeholder="0" type="number" min="0" valorp="10"> <!-- Quantidade do produto -->
 
 			</div>
 			<div class="produto">
 				<label class="nomeproduto">Chá gelado</label>
-				<input inptprod placeholder="0" type="number" min="0" valorp="6">
+				<input inptprod id="prod1" placeholder="0" type="number" min="0" valorp="6">
 
 			</div>
 			<div class="produto">
 				<label class="nomeproduto">Onigiri</label>
-				<input inptprod placeholder="0" type="number" min="0" valorp="5">
+				<input inptprod id="prod2" placeholder="0" type="number" min="0" valorp="5">
 
 			</div>
 
 			<div class="produto">
 				<label class="nomeproduto">Refrigerante</label>
-				<input inptprod placeholder="0" type="number" min="0" valorp="5">
+				<input inptprod id="prod3" placeholder="0" type="number" min="0" valorp="5">
 
 			</div>
 			<div class="produto">
 				<label class="nomeproduto">Bandeja</label>
-				<input inptprod placeholder="0" type="number" min="0" valorp="15">
+				<input inptprod id="prod4" placeholder="0" type="number" min="0" valorp="15">
 
 			</div>
 			<div class="produto">
 				<label class="nomeproduto">Suco</label>
-				<input inptprod placeholder="0" type="number" min="0" valorp="4">
+				<input inptprod id="prod5" placeholder="0" type="number" min="0" valorp="4">
 
 			</div>
 			<!-- Botões para selecionar o metodo de pagamento -->
 			<div class="pagamento">
-				<label class="pag">Dinheiro </label><input type="radio" name="metodo" placeholder="Dinheiro" required>
-				<label class="pag">Cartão </label><input type="radio" name="metodo" placeholder="Cartão" required>
+				<label radpag class="pag">Dinheiro </label><input value="din" type="radio" name="metodo" placeholder="Dinheiro"
+					required>
+				<label radpag class="pag">Cartão </label><input value="cart"type="radio" name="metodo" placeholder="Cartão" checked>
 			</div>
 			<!-- Botões de cancelar e finalizar venda -->
 			<div class="btpag">
@@ -97,19 +99,26 @@
 	$("document").ready(() => {
 
 		var prods = $('[inptprod]') // Função para pegar os inputs
-		console.log(prods)
 		var prodqnt = [];
 
 		fetch('/adm') // Get para receber as quantidades dos produtos
 			.then(res => res.json())
 			.then(vals => {
-				for( let i = 0; i < 6; i++) {
+				for (let i = 0; i < 6; i++) {
 					prodqnt[i] = vals[i]
 				};
 			})
 		
+		console.log(prods)
+		$('[inptprod]').change(e => {
+			console.log(prodqnt[e.target.id.slice(4)])
+			if(prodqnt[e.target.id.slice(4)] < e.target.value){
+				alert(`A Quantidade de ${e.target.parentElement.innerText} em Estoque é ${prodqnt[e.target.id.slice(4)]}`)
+			}
+		})
 
 
+		// Funções de Confirmação de cancelamento e de Venda.
 		$("#btcancel").click(() => {
 			confirm("DESEJA CANCELAR A VENDA ATUAL?") ? window.location.href = '/venda' : console.log('Cancelamento de venda cancelado');
 		})
@@ -117,21 +126,25 @@
 			let prodvenda = "";
 			let valvenda = 0;
 
-			for( let i = 0; i < 6; i++) {
-				if(prods[i].value > 0) {
+			 for (let i = 0; i < 6; i++) {  //For para juntar os dados da venda, produtos em prodvenda, valor em valvenda e quantidade em prodqnt
+				if (prods[i].value > 0) {
 					prodvenda += ` ${prods[i].previousElementSibling.innerText} ${prods[i].value}x .`;
 					valvenda += prods[i].getAttribute("valorp") * prods[i].value;
 					prodqnt[i] -= [prods[i].value]
 				}
 			};
 
-			var docVenda={
+			var docVenda = {   // Gerando objeto que contém produtos e valor da venda, para serem enviados ao BD através do post
 				"produtos": prodvenda,
 				"valor": valvenda
 			}
+			$.post("/venda", docVenda);
 
-			$.post( "/venda",  docVenda  );
-			$.post( "/adm/update", { prodqnt } );
+			$.post("/adm/update", { prodqnt }); // Post atualizando a quantidade de produtos em estoque
+
+			if($("input:checked").val() === "din") {   // Caso o pagamento escolhido tenha sido dinheiro, acrescentar o valor ao montante em caixa
+				$.post("/adm/updateCx", { valvenda });
+			}
 
 			alert("COMPRA FINALIZADA")
 			window.location.href = '/venda'

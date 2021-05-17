@@ -31,11 +31,11 @@
 		<div class="midboxcaixa">
 			<div class="valorc">
 				<label class="qtcaixa">Quantia em caixa:</label> 
-				<input value="0" disabled> <!-- Quantia em caixa -->
+				<input id="valCaixa" value="0" disabled> <!-- Quantia em caixa -->
 			</div>
 			<!-- Botão de zerar (reinciar) o caixa -->
 			<div class="btzerar">
-				<button class="zerarbt">
+				<button class="zerarbt" id="zerarbt">
 					Zerar Caixa
 				</button>
 			</div>
@@ -56,4 +56,17 @@
 	<div class="footers"></div>
 </footer>
 
+<script>
+
+
+	fetch('/adm/valorCx') // Get para receber o valor em caixa
+			.then(res => res.json())
+			.then(vals => $('#valCaixa').val(vals))
+
+	$('#zerarbt').click(() => { // Post para zerar o valor em caixa
+		$.post("adm/zerarCx")
+		window.location.href = '/caixa'
+	})
+
+</script>
 </html>

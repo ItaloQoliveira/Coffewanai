@@ -7,21 +7,22 @@
 </head>
 
 <!-- Corpo da página -->
+
 <body>
 	<!-- Cabeçalho -->
 	<div class="header">
 		<!-- Logo -->
 		<div class="logo">
-			<img src="images/coffee-cup.svg" height="30px" width="30px" ></img>
+			<img src="images/coffee-cup.svg" height="30px" width="30px"></img>
 			<a href="/"> Coffewanai </a>
 		</div>
 		<!-- Botões de navegação da página -->
 		<nav class="bt">
 			<ul class="bt-link">
-				<li class="link btr"><a  href="/venda"> Venda </a></li>				
-				<li class="link btr"><a  href="/estoque"> Estoque </a></li>									
-				<li class="link btr"><a  href="/caixa"> Caixa </a></li>										
-				<li class="link btr selectr"><a  href="/relatorio"> Relátorio </a></li>							
+				<li class="link btr"><a href="/venda"> Venda </a></li>
+				<li class="link btr"><a href="/estoque"> Estoque </a></li>
+				<li class="link btr"><a href="/caixa"> Caixa </a></li>
+				<li class="link btr selectr"><a href="/relatorio"> Relátorio </a></li>
 			</ul>
 		</nav>
 	</div>
@@ -29,18 +30,30 @@
 	<div class="contrel">
 		<!-- Caixa central com as operações relacionadas à geração de relatório -->
 		<div class="midboxrel">
-			<div class="valorc">
-				<label class="nomeproduto">Quantia em caixa:</label>
-				<input placeholder="0" disabled>
+			
+			
+			<table id="tablerel">
+				<tr>
+					<th>Produtos</th>
+					<th>Valor</th>
+				</tr>
+
+			</table>
+			
+
+			<div class="selData" id="seldata">
+				<label>Data do Relatório: </label>
+				<input type="date" id="datarel" min="2021-05-16" required>
 			</div>
+
 			<!-- Botão de gerar relatório -->
-			<div class="btrel">
-				<button class="relbt">
+			<div class="btrel" id="btrel">
+				<button class="relbt" id="relbt" >
 					Gerar Relatório
 				</button>
 			</div>
-			
-				
+
+
 		</div>
 		<!-- Imagem da página de relatório -->
 		<div class="imagemtr">
@@ -48,12 +61,54 @@
 		</div>
 		<!-- Circulo da página de relatório -->
 		<div class="circler">
-	</div>
-	
+		</div>
+
 
 </body>
 <footer>
 	<div class="footers"></div>
 </footer>
+
+<script>
+	var vendas = [];
+
+
+	fetch('/venda/vendas') // Get para receber as quantidades dos produtos
+		.then(res => res.json())
+		.then(vals => {
+			console.log(vals)
+			for (let i = 0; i < vals.length; i++) {
+				vendas[i] = vals[i];
+				// console.log(vals[i].data.slice(0,10)== "2021-05-17" )
+			};
+		})
+
+	$('#relbt').click(() => {
+		if ($('#datarel').val() != "") {
+			var infoVendas = [];
+			for (let i = 0; i < vendas.length; i++) {
+				if (vendas[i].data.slice(0, 10) === $('#datarel').val()) {
+					infoVendas.push(vendas[i])
+				}
+			}
+			console.log(infoVendas)
+
+			for (let i = 0; i < infoVendas.length; i++) {
+				$('#tablerel').append(
+					`<tr> <td> ${infoVendas[i].produtos} </td> <td> ${infoVendas[i].valor} </td> </tr> `
+				)
+			}
+
+			$('#seldata').fadeOut()
+			$('#btrel').fadeOut()
+			$('#tablerel').fadeIn().css('display','flex')
+			
+
+		}else{
+			alert("Informe uma data!")			
+		}
+	})
+
+</script>
 
 </html>

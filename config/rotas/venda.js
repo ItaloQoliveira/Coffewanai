@@ -13,13 +13,13 @@ router.post('/', (req, res) => { //função post para adicionar documento adm
             return res.status(500).send({ error: 'Erro ao cadastrar documento de venda' });
         }
     }
- 
+    
 })
-// router.get('/', async (req, res) => { //Metodo get na raiz de adm causa retorno de estoque
-//     const adm = await AdmModel.find({});
+router.get('/vendas', async (req, res) => { //Metodo get para retornar todos documentos venda
+    const vendas = await VendaModel.find({});
     
     
-//     res.send(adm)
-// })
+    res.send(vendas)
+})
 
 module.exports = router;

@@ -465,13 +465,40 @@ body{
     width: 60vw;
     margin-left: 5vw;
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
     place-items: center;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     border: 2px solid #1abc9c;
     background-color: rgb(240, 239, 239);
     font-weight: 600;
     z-index: 1;
+    overflow: hidden;   
+    overflow-y: scroll;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    background-color: #1abc9c;
+}
+
+table {
+    background-color: lightblue;  
+    width: 100%;
+    margin: 3px 0 0 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
 }
 
 .btrel button {

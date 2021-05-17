@@ -13,7 +13,7 @@ router.post('/add', (req, res) => { //função post para adicionar documento adm
             return res.status(500).send({ error: 'Erro ao cadastrar documento adm' });
         }
     }
- 
+
 })
 router.get('/', async (req, res) => { //Metodo get na raiz de adm causa retorno de estoque
     const adm = await AdmModel.find({});
@@ -25,11 +25,11 @@ router.get('/', async (req, res) => { //Metodo get na raiz de adm causa retorno 
     adm[0].suco.qntd]
     res.send(data)
 })
-router.post('/update', async(req, res) => { // metodo post para atualizar as quantias em estoque
-    
+router.post('/update', async (req, res) => { // metodo post para atualizar as quantias em estoque
+
     try {
         const adm = await AdmModel.findOne();
-        
+
         adm.sanduiche.qntd = req.body.prodqnt[0]
         adm.cha.qntd = req.body.prodqnt[1]
         adm.onigiri.qntd = req.body.prodqnt[2]
@@ -45,4 +45,51 @@ router.post('/update', async(req, res) => { // metodo post para atualizar as qua
     }
 
 })
+router.post('/updateCx', async (req, res) => { // metodo post para atualizar o valor em caixa, quando a venda é por dinheiro
+
+    try {
+        const adm = await AdmModel.findOne();
+
+        adm.caixaVal += req.body.valvenda;
+
+        await adm.save();
+    }
+    catch (err) {
+        if (err) {
+            return res.status(500).send({ error: 'Erro ao update  documento adm' });
+        }
+    }
+
+})
+
+router.get('/valorCx', async (req, res) => { //Metodo get para recolher do banco de dados o valor em caixa.
+    try {
+        const adm = await AdmModel.find({});
+        var data = [adm[0].caixaVal]
+        res.send(data)
+    }
+    catch (err) {
+        if (err) {
+            return res.status(500).send({ error: 'Erro ao update  documento adm' });
+        }
+    }
+
+})
+router.post('/zerarCx', async (req, res) => { // metodo post para zerar valor em caixa
+
+    try {
+        const adm = await AdmModel.findOne();
+
+        adm.caixaVal = 0;
+
+        await adm.save();
+    }
+    catch (err) {
+        if (err) {
+            return res.status(500).send({ error: 'Erro ao update  documento adm' });
+        }
+    }
+
+})
+
 module.exports = router;
