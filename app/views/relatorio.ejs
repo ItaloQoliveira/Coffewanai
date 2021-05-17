@@ -34,7 +34,7 @@
 			
 			<table id="tablerel">
 				<tr>
-					<th>Produtos</th>
+					<th>Venda</th>
 					<th>Valor</th>
 				</tr>
 
@@ -96,7 +96,7 @@
 
 			for (let i = 0; i < infoVendas.length; i++) {     // Cria as linhas da tabela com as informações das vendas
 				$('#tablerel').append(
-					`<tr> <td> ${infoVendas[i].produtos} </td> <td> ${infoVendas[i].valor} </td> </tr> `
+					`<tr> <td> ${infoVendas[i].produtos} </td> <td> R$ ${infoVendas[i].valor},00 </td> </tr> `
 				)
 			}
 
