@@ -472,6 +472,8 @@ body{
     background-color: rgb(240, 239, 239);
     font-weight: 600;
     z-index: 1;
+    overflow:hidden;
+    overflow-y:scroll;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
