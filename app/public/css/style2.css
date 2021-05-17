@@ -472,8 +472,6 @@ body{
     background-color: rgb(240, 239, 239);
     font-weight: 600;
     z-index: 1;
-    overflow: hidden;   
-    overflow-y: scroll;
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
@@ -481,8 +479,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     background-color: #1abc9c;
 }
 
-table {
-    background-color: lightblue;  
+table { 
     width: 100%;
     margin: 3px 0 0 0;
     display: none;

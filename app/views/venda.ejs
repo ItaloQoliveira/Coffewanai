@@ -109,9 +109,8 @@
 				};
 			})
 		
-		console.log(prods)
-		$('[inptprod]').change(e => {
-			console.log(prodqnt[e.target.id.slice(4)])
+		
+		$('[inptprod]').change(e => {		// Função para ao selecionar uma quantidade de produtos maior do que há no estoque emitir um alerta
 			if(prodqnt[e.target.id.slice(4)] < e.target.value){
 				alert(`A Quantidade de ${e.target.parentElement.innerText} em Estoque é ${prodqnt[e.target.id.slice(4)]}`)
 			}

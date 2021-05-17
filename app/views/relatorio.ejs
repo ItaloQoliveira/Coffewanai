@@ -83,17 +83,18 @@
 			};
 		})
 
-	$('#relbt').click(() => {
+	$('#relbt').click(() => {  // Função para ao clicar no Gerar Relatório os inputs saírem da tela e a tabela aparecer 
 		if ($('#datarel').val() != "") {
 			var infoVendas = [];
+
 			for (let i = 0; i < vendas.length; i++) {
-				if (vendas[i].data.slice(0, 10) === $('#datarel').val()) {
+				if (vendas[i].data.slice(0, 10) === $('#datarel').val()) { // Compara e adiciona ao array infoVendas apenas as vendas da data escolhida
 					infoVendas.push(vendas[i])
 				}
 			}
 			console.log(infoVendas)
 
-			for (let i = 0; i < infoVendas.length; i++) {
+			for (let i = 0; i < infoVendas.length; i++) {     // Cria as linhas da tabela com as informações das vendas
 				$('#tablerel').append(
 					`<tr> <td> ${infoVendas[i].produtos} </td> <td> ${infoVendas[i].valor} </td> </tr> `
 				)
@@ -101,7 +102,7 @@
 
 			$('#seldata').fadeOut()
 			$('#btrel').fadeOut()
-			$('#tablerel').fadeIn().css('display','flex')
+			$('#tablerel').fadeIn().css('display','flex').css('overflow','hidden').css('overflow-y','scroll') // Propriedades para aparecer a tabela junto da barra de scroll.
 			
 
 		}else{
