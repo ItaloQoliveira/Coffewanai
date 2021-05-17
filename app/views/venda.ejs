@@ -31,46 +31,46 @@
 		<div class="midbox">
 			<div class="produto">
 				<label class="nomeproduto">Sanduiche</label> <!-- Nome do produto -->
-				<input placeholder="0" type="number" min="0"> <!-- Quantidade do produto -->
+				<input inptprod placeholder="0" type="number" min="0" valorp="10"> <!-- Quantidade do produto -->
 
 			</div>
 			<div class="produto">
 				<label class="nomeproduto">Chá gelado</label>
-				<input placeholder="0" type="number" min="0">
+				<input inptprod placeholder="0" type="number" min="0" valorp="6">
 
 			</div>
 			<div class="produto">
 				<label class="nomeproduto">Onigiri</label>
-				<input placeholder="0" type="number" min="0">
+				<input inptprod placeholder="0" type="number" min="0" valorp="5">
 
 			</div>
 
 			<div class="produto">
 				<label class="nomeproduto">Refrigerante</label>
-				<input placeholder="0" type="number" min="0">
+				<input inptprod placeholder="0" type="number" min="0" valorp="5">
 
 			</div>
 			<div class="produto">
 				<label class="nomeproduto">Bandeja</label>
-				<input placeholder="0" type="number" min="0">
+				<input inptprod placeholder="0" type="number" min="0" valorp="15">
 
 			</div>
 			<div class="produto">
 				<label class="nomeproduto">Suco</label>
-				<input placeholder="0" type="number" min="0">
+				<input inptprod placeholder="0" type="number" min="0" valorp="4">
 
 			</div>
 			<!-- Botões para selecionar o metodo de pagamento -->
 			<div class="pagamento">
-				<label class="pag">Dinheiro </label><input type="radio" name="metodo" value="Dinheiro">
-				<label class="pag">Cartão </label><input type="radio" name="metodo" value="Cartão">
+				<label class="pag">Dinheiro </label><input type="radio" name="metodo" placeholder="Dinheiro" required>
+				<label class="pag">Cartão </label><input type="radio" name="metodo" placeholder="Cartão" required>
 			</div>
 			<!-- Botões de cancelar e finalizar venda -->
 			<div class="btpag">
 				<button class="cancelbt" id="btcancel">
 					Cancelar
 				</button>
-				<button class="finalbt" id="btconfirm">
+				<button class="finalbt" id="btconfirm" name=metodo>
 					Finalizar
 				</button>
 			</div>
@@ -95,13 +95,49 @@
 <script>
 	// Funções de Confirmação de cancelamento de venda e alerta de finalização
 	$("document").ready(() => {
+
+		var prods = $('[inptprod]') // Função para pegar os inputs
+		console.log(prods)
+		var prodqnt = [];
+
+		fetch('/adm') // Get para receber as quantidades dos produtos
+			.then(res => res.json())
+			.then(vals => {
+				for( let i = 0; i < 6; i++) {
+					prodqnt[i] = vals[i]
+				};
+			})
+		
+
+
 		$("#btcancel").click(() => {
 			confirm("DESEJA CANCELAR A VENDA ATUAL?") ? window.location.href = '/venda' : console.log('Cancelamento de venda cancelado');
 		})
 		$("#btconfirm").click(() => {
+			let prodvenda = "";
+			let valvenda = 0;
+
+			for( let i = 0; i < 6; i++) {
+				if(prods[i].value > 0) {
+					prodvenda += ` ${prods[i].previousElementSibling.innerText} ${prods[i].value}x .`;
+					valvenda += prods[i].getAttribute("valorp") * prods[i].value;
+					prodqnt[i] -= [prods[i].value]
+				}
+			};
+
+			var docVenda={
+				"produtos": prodvenda,
+				"valor": valvenda
+			}
+
+			$.post( "/venda",  docVenda  );
+			$.post( "/adm/update", { prodqnt } );
+
 			alert("COMPRA FINALIZADA")
 			window.location.href = '/venda'
 		});
+
+
 
 	})
 

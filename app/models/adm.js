@@ -5,7 +5,7 @@ const AdmSchema = new Schema({
     sanduiche:{
         qntd: {type: Number, required:true},
         valor: {type: Number, required:true}
-    },
+    }, 
     bandeja:{
         qntd: {type: Number, required:true},
         valor: {type: Number, required:true}

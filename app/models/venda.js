@@ -4,10 +4,9 @@ const Schema = mongoose.Schema;
 const VendaSchema = new Schema({
 
 
-    "Produtos": { type: String, required: true },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-    "Valor": { type: Number, required: true },
-    "Data": { type: Date, default: Date.now }
-
+    "produtos": { type: String, required: true },                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+    "valor": { type: Number, required: true },
+    "data": { type: Date, default: Date.now }
 
 })
 
