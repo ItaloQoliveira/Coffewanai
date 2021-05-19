@@ -94,11 +94,16 @@
 			}
 			console.log(infoVendas)
 
-			for (let i = 0; i < infoVendas.length; i++) {     // Cria as linhas da tabela com as informações das vendas
+			var totalVendas = 0;
+			for (let i = 0; i < infoVendas.length; i++) {     // Cria as linhas da tabela com as informações das vendas				
 				$('#tablerel').append(
-					`<tr> <td> ${infoVendas[i].produtos} </td> <td> R$ ${infoVendas[i].valor},00 </td> </tr> `
+					`<tr> <td> ${infoVendas[i].produtos} </td> <td> R$ ${infoVendas[i].valor},00 </td> </tr> `					
 				)
+				totalVendas += infoVendas[i].valor
 			}
+			$('#tablerel').append(
+					`<tr> <td> TOTAL </td> <td> R$ ${totalVendas} </td> </tr> `					
+			)
 
 			$('#seldata').fadeOut()
 			$('#btrel').fadeOut()
