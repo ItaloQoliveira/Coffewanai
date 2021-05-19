@@ -61,7 +61,7 @@
 
 	fetch('/adm/valorCx') // Get para receber o valor em caixa
 			.then(res => res.json())
-			.then(vals => $('#valCaixa').val(vals))
+			.then(vals => $('#valCaixa').val('R$ '+vals+',00'))
 
 	$('#zerarbt').click(() => { // Post para zerar o valor em caixa
 		$.post("adm/zerarCx")
