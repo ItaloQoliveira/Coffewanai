@@ -133,20 +133,23 @@
 				}
 			};
 
-			var docVenda = {   // Gerando objeto que contém produtos e valor da venda, para serem enviados ao BD através do post
-				"produtos": prodvenda,
-				"valor": valvenda
-			}
-			$.post("/venda", docVenda);
+			if(confirm(`CONFIRMAR COMPRA NO VALOR DE R$ ${valvenda},00 ?`)) {
+				var docVenda = {   // Gerando objeto que contém produtos e valor da venda, para serem enviados ao BD através do post
+					"produtos": prodvenda,
+					"valor": valvenda
+				}
+				$.post("/venda", docVenda);
 
-			$.post("/adm/update", { prodqnt }); // Post atualizando a quantidade de produtos em estoque
+				$.post("/adm/update", { prodqnt }); // Post atualizando a quantidade de produtos em estoque
 
-			if($("input:checked").val() === "din") {   // Caso o pagamento escolhido tenha sido dinheiro, acrescentar o valor ao montante em caixa
+					if($("input:checked").val() === "din") {   // Caso o pagamento escolhido tenha sido dinheiro, acrescentar o valor ao montante em caixa
 				$.post("/adm/updateCx", { valvenda });
+				}
+
+				alert(`COMPRA FINALIZADA`)
+				window.location.href = '/venda'
 			}
 
-			alert("COMPRA FINALIZADA")
-			window.location.href = '/venda'
 		});
 
 
