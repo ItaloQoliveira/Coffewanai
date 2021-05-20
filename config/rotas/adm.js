@@ -50,7 +50,7 @@ router.post('/updateCx', async (req, res) => { // metodo post para atualizar o v
     try {
         const adm = await AdmModel.findOne();
 
-        adm.caixaVal += req.body.valvenda;
+        adm.caixaVal += Number(req.body.valvenda);
 
         await adm.save();
     }

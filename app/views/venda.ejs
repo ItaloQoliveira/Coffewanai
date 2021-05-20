@@ -142,8 +142,8 @@
 
 				$.post("/adm/update", { prodqnt }); // Post atualizando a quantidade de produtos em estoque
 
-					if($("input:checked").val() === "din") {   // Caso o pagamento escolhido tenha sido dinheiro, acrescentar o valor ao montante em caixa
-				$.post("/adm/updateCx", { valvenda });
+				if($("input:checked").val() === "din") {   // Caso o pagamento escolhido tenha sido dinheiro, acrescentar o valor ao montante em caixa
+					$.post("/adm/updateCx", { valvenda });
 				}
 
 				alert(`COMPRA FINALIZADA`)

@@ -157,7 +157,7 @@ body{
     width: 100%;
     height: 100%;
     background: pink;
-    clip-path: circle(53.7% at right 750px);
+    clip-path: circle(53.7% at right 100%);
 }
 
 /*FIM TELA INICIAL*/
@@ -260,7 +260,7 @@ body{
     width: 100%;
     height: 100%;
     background: #3498db;
-    clip-path: circle(53.7% at right 750px);
+    clip-path: circle(53.7% at right 100%);
 }
 
 /*FIM GERENCIAR VENDAS*/
@@ -359,7 +359,7 @@ body{
     width: 100%;
     height: 100%;
     background: #f0c416;
-    clip-path: circle(53.7% at right 750px);
+    clip-path: circle(53.7% at right 100%);
 }
 
 /*FIM GERENCIAR ESTOQUE*/
@@ -440,7 +440,7 @@ body{
     width: 100%;
     height: 100%;
     background: #9b59b6;
-    clip-path: circle(53.7% at right 750px);
+    clip-path: circle(53.7% at right 100%);
 }
 
 /*FIM GERENCIAR CAIXA*/
@@ -523,8 +523,15 @@ th, td {
     width: 100%;
     height: 100%;
     background: #1abc9c;
-    clip-path: circle(85vh at right 750px);
+    clip-path: circle(53.7% at right 100%);
 }
 
 /*FIM RELATÓRIO*/
 /*===========================================================*/
+/* MEDIA QUERY */
+
+/* @media screen and (min-width: 1500px){
+    .circlei {
+        clip-path: circle(45% at right 100%); 
+    }
+} */
